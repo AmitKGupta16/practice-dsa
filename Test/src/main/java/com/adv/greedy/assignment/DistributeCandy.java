@@ -56,6 +56,25 @@ import java.util.ArrayList;
         Candies given = [1, 3, 2, 1]*/
 public class DistributeCandy {
     public int candy(ArrayList<Integer> A) {
-        return 0;
+        ArrayList<Integer> candy = new ArrayList<>();
+        for(int i=0;i<A.size();i++) {
+            candy.set(i,1);
+        }
+        for(int i=1;i<A.size();i++) {
+            if(A.get(i) > A.get(i-1)) {
+                candy.set(i,candy.get(i-1)+1);
+            }
+        }
+        for(int i=A.size()-2;i>=0;i--) {
+            if(A.get(i) > A.get(i+1)){
+                candy.set(i,Math.max(A.get(i),A.get(i+1)+1));
+            }
+        }
+        int sum=0;
+        for(Integer val:candy){
+            sum+=val;
+
+        }
+        return sum;
     }
 }
