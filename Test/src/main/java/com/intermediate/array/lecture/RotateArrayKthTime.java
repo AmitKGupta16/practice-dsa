@@ -1,4 +1,4 @@
-package com.adv.heap.lecture;
+package com.intermediate.array.lecture;
 /* Given an Array of size N, Rotate the array from right to left Kth time
 arr = {1 2 3 4 5} K =3
 k =1 { 5 1 2 3 4}

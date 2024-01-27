@@ -1,4 +1,4 @@
-package com.adv.heap.lecture;
+package com.intermediate.array.lecture;
 
 /* Given an array of size N. Check if there exists a pair(i,j), such that arr[i]+arr[j] =k
  and i!=j */

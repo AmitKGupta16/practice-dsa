@@ -1,4 +1,4 @@
-package com.adv.heap.lecture;
+package com.intermediate.array.lecture;
 
 public class ReversePartOfArray {
     public static void main(String[] args) {
