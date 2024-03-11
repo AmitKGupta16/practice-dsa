@@ -7,15 +7,17 @@
 
 
 
-Recursion : - Solving larger problems using smaller similar subproblems.
-![](images/rec1.png)
+    Recursion : - Solving larger problems using smaller similar subproblems.
+    ![](images/rec1.png)
 
-Sum[N] = 1+2+3+4+5+.....+N-1+N
+    Sum[N] = 1+2+3+4+5+.....+N-1+N
 
-Sum[N] = Sum[N-1] + N -> Recursive rotation.
+    Sum[N] = Sum[N-1] + N -> Recursive rotation.
 
-Ques: Write Recursive function for sum of N natural numbers.
+    Ques: Write Recursive function for sum of N natural numbers.
 
-Assumption : Decide what your function does.
+    Assumption : Decide what your function does.
 
-![alt](https://https://github.com/AmitKGupta16/practice-dsa-images/tree/main/image-src/recursion/rec1.png)
+    Main Logic: Recursive relation to code breaking big problems into smaller subproblems.
+
+    Base condition/Terminating condition: Smallest problem which you already know the answer.

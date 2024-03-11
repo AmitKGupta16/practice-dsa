@@ -43,13 +43,50 @@ import java.util.Arrays;
         Example Explanation
         Explanation 1:
 
-        Possible combinations are : (12 + 12 + 12 + 12 + 12 + 12) and (12 + 12 + 22).
+        Possible combinations are : (1^2 + 1^2 + 1^2 + 1^2 + 1^2 + 1^2) and (1^2 + 1^2 + 2^2).
         Minimum count of numbers, sum of whose squares is 6 is 3.
         Explanation 2:
 
-        We can represent 5 using only 2 numbers i.e. 12 + 22 = 5*/
+        We can represent 5 using only 2 numbers i.e. 1^2 + 2^2 = 5*/
 public class MinimumNumberofSquares {
-    public int countMinSquares(int A) {
+    public static int[] dp;
+
+    public static void main(String[] args) {
+        int N=2;
+        dp = new int[N+1];
+        Arrays.fill(dp,-1);
+        dp[0] =0;
+        //System.out.println(minSquare(N));
+        System.out.println(countMinSquare(N));
+
+    }
+
+    public static int minSquare(int N) {
+        if(N==0) {
+            return 0;
+        }
+        if(dp[N] !=-1) {
+            return dp[N];
+        }
+        int minVal = Integer.MAX_VALUE;
+        for(int i=1;i*i<=N;i++) {
+            minVal = Math.min(minVal,minSquare(N-(i*i)));
+        }
+        dp[N] = minVal+1;
+        return dp[N];
+    }
+
+    public static int countMinSquare(int N) {
+        for(int i=1;i<=N;i++) {
+            int minVal = Integer.MAX_VALUE;
+            for(int j=1;j*j<=i;j++) {
+                minVal = Math.min(minVal,dp[i-(j*j)]);
+            }
+            dp[i] =minVal+1;
+        }
+        return dp[N];
+    }
+/*    public int countMinSquares(int A) {
         int[] dp = new int[A+1];
         Arrays.fill(dp,-1);
         dp[0] = 0;
@@ -61,5 +98,7 @@ public class MinimumNumberofSquares {
             dp[i] = minVal+1;
         }
         return dp[A];
-    }
+    }*/
+
+
 }

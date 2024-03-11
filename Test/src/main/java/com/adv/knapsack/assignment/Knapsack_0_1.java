@@ -69,19 +69,21 @@ import java.util.ArrayList;
 public class Knapsack_0_1 {
     public int solve(int[] A, int[] B, int C) {
         int[][] dp = new int[A.length+1][B.length+1];
+        int maxValue =0;
         for(int i=0;i<=A.length;i++) {
-            for(int j=0;j<=B.length;j++) {
+            for(int j=0;j<=C;j++) {
                 if(i==0 || j==0) dp[i][j]=0;
                 else {
                     int exclude = dp[i-1][j];
                     int include = 0;
                     if(B[i-1] <=j) {
-                        include = A[i-1] + dp[i-1][j-B[j-1]];
+                        include = A[i-1] + dp[i-1][j-B[i-1]];
                     }
                     dp[i][j] = Math.max(include,exclude);
                 }
+                maxValue = Math.max(dp[i][j], maxValue);
             }
         }
-        return dp[A.length][B.length];
+        return maxValue;
     }
 }

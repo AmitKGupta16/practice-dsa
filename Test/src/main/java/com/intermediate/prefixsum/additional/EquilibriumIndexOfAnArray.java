@@ -1,6 +1,7 @@
 package com.intermediate.prefixsum.additional;
 
 import java.util.ArrayList;
+import java.util.List;
 /*Problem Description
         You are given an array A of integers of size N.
 
@@ -68,7 +69,46 @@ import java.util.ArrayList;
         Thus, there is no such index.*/
 
 public class EquilibriumIndexOfAnArray {
+    public static void main(String[] args) {
+        EquilibriumIndexOfAnArray equilibriumIndexOfAnArray = new EquilibriumIndexOfAnArray();
+        int ans=   equilibriumIndexOfAnArray.solve(new ArrayList<>(List.of(-7, 1, 5, 2, -4, 3, 0)));
+        //int ans=   equilibriumIndexOfAnArray.solve(new ArrayList<>(List.of(1, 2, 3)));
+        System.out.println(ans);
+
+
+    }
+    private int[] pfLowerIndex(ArrayList<Integer> A) {
+        int [] pfLower = new int[A.size()];
+        pfLower[0] = A.get(0);
+        for(int idx = 1; idx < A.size(); idx++) {
+            pfLower[idx] = pfLower[idx-1] + A.get(idx);
+        }
+        return pfLower;
+    }
+
+    private int[] pfHigherIndex(ArrayList<Integer> A) {
+        int[] pfHigher = new int[A.size()];
+        pfHigher[A.size()-1] = A.get(A.size()-1);
+        for( int idx = A.size()-2; idx >=0; idx--) {
+            pfHigher[idx] = pfHigher[idx+1] + A.get(idx);
+        }
+        return pfHigher;
+    }
     public int solve(ArrayList<Integer> A) {
-        return 0;
+        if(A.size() <=1 ) return 0;
+        int[] pfLower = pfLowerIndex(A);
+        int[] pfHigher = pfHigherIndex(A);
+        int start = 0 , end = A.size()-1;
+        int cnt =0 ;
+        //int ans =0;
+        while(start < end) {
+           if( pfLower[start] == pfHigher[end] ) {
+               cnt++;
+               //ans = start;
+           }
+           start ++; end --;
+
+        }
+        return cnt == 0 ? -1:start;
     }
 }

@@ -82,4 +82,14 @@ public class Valid_Binary_Search_Tree {
         boolean right= validate(A.right,A.val,max);
         return (left && right);
     }
+
+
+    public boolean validBinaryTree(TreeNode A, long min,long max) {
+        if(A==null) return true;
+        if(A.val <=min || A.val >=max ) return false;
+        boolean left = validBinaryTree(A.left,min,A.val);
+        boolean right = validBinaryTree(A.right,A.val,max);
+        return left && right;
+
+    }
 }
