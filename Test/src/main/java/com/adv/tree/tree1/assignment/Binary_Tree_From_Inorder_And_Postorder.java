@@ -69,9 +69,11 @@ public class Binary_Tree_From_Inorder_And_Postorder {
         }
         TreeNode root = new TreeNode(B.get(pe));
         int rootIdx = findRootIndex(root.val, A);
+        //Number of node left subtree (is, rootIdx-1)
+        // b-a +1 ( rootidx-1-is+1) =  rootidx-is
         int cnt = rootIdx-is;
         root.left = buildTree(A,B,is,rootIdx-1,ps,ps+cnt-1);
-        root.right = buildTree(A,B,rootIdx+1,ie,ps+cnt,pe-1);
+        root.right = buildTree(A,B,rootIdx+1,ie,ps+cnt,pe- 1);
         return root;
 
     }
