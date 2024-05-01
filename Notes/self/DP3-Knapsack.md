@@ -116,7 +116,7 @@ T.C : O(NxCapacity), S.C: O(NxCapacity)
 ![images/dp3_7.png](images/dp3_7.png)
 
 ```java
-import java.awt.color.ICC_ColorSpace;
+
 
 int[] dp = new int[capacity + 1];
 Arrays.fill(dp,-1);
@@ -130,9 +130,9 @@ public int  solve(int[] H, int[] W, int capacity) {
             }
         }
     }
-    return dp[w];
+    return dp[capacity];
 
 }
 
 ```
-T.C :(NxCapacity), S.C : O(Capacity);
+T.C :(NxCapacity) ,S.C : O(Capacity);

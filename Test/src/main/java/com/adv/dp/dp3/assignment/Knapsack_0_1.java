@@ -1,6 +1,8 @@
 package com.adv.dp.dp3.assignment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /*Problem Description
 Given two integer arrays A and B of size N each which represent values and weights associated with N items respectively.
@@ -68,6 +70,30 @@ Explanation 2:
 Knapsack capacity is 10 but each item has weight greater than 10 so no items can be considered in the knapsack therefore answer is 0.*/
 
 public class Knapsack_0_1 {
-    public int solve(ArrayList<Integer> A, ArrayList<Integer> B, int C) {
+    public static void main(String[] args) {
+        ArrayList<Integer> A = new ArrayList<>(List.of(10, 20, 30, 40));
+        ArrayList<Integer> B = new ArrayList<>(List.of(12, 13, 15, 19));
+        int C =10;
+        solve(A,B,C);
+    }
+    public static int solve(ArrayList<Integer> A, ArrayList<Integer> B, int C) {
+        int N = A.size();
+        int[][] dp = new int[N][C+1];
+        for(int[] val: dp) {
+            Arrays.fill(val,-1);
+        }
+        return calculate(A,B,dp,N-1,C);
+    }
+
+    public static int calculate(ArrayList<Integer> A, ArrayList<Integer> B, int[][] dp, int index, int capacity) {
+        if (index < 0) return 0;
+        if(dp[index][capacity] !=-1) return dp[index][capacity];
+        int notTake = calculate(A,B,dp,index-1,capacity);
+        int take = 0;
+        if(capacity >= B.get(index)) {
+            take = A.get(index) + calculate(A,B,dp,index-1,capacity- B.get(index));
+        }
+        dp[index][capacity] = Math.max(take,notTake);
+        return dp[index][capacity];
     }
 }
