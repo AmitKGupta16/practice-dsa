@@ -2,6 +2,7 @@ package com.adv.graph.graph1.assignment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -85,11 +86,23 @@ public class PathInDirectedGraph {
         List<List<Integer>> input = Arrays.stream(B)
                 .map(row -> Arrays.stream(row).boxed().collect(Collectors.toList()))
                 .collect(Collectors.toList());
-        createList(input,A);
+        ArrayList<ArrayList<Integer>> adjList =  createList(input,A);
         boolean[] visited = new boolean[A+1];
         Arrays.fill(visited,false);
+        HashSet<Integer> paths = new HashSet<>();
+        dfs(1,visited,paths,adjList);
 
-        return 0;
+        return paths.contains(A) ? 1:0;
+    }
+
+    public void dfs (int node, boolean[] visited, HashSet<Integer> paths,  ArrayList<ArrayList<Integer>> adjList ) {
+        paths.add(node);
+        visited[node] = true;
+        for(int nbr : adjList.get(node)) {
+            if (!visited[nbr]) {
+                dfs(nbr,visited,paths,adjList);
+            }
+        }
     }
 
     public static ArrayList<ArrayList<Integer>> createList(List<List<Integer>> input, int node) {

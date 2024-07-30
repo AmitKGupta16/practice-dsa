@@ -38,7 +38,7 @@ public class NumberOf1Bits {
         int count = 0;
         while (A > 0) {
             if ((A & 1) > 0) count++;
-           // A = A/2; is same as A = A >> 1 - A left sift 1
+           // A = A/2; is same as A = A >> 1 - A right sift 1
             A = A >> 1;
         }
         return count;

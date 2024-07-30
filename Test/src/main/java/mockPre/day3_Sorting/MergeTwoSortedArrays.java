@@ -58,7 +58,7 @@ public class MergeTwoSortedArrays {
                 indexB++;
             } else {
                 result.add(A.get(indexA));
-                result.add(A.get(indexA));
+                result.add(B.get(indexB));
                 indexA++;
                 indexB++;
             }

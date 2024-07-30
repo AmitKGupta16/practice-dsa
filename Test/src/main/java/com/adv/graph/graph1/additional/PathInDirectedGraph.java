@@ -38,7 +38,6 @@ public class PathInDirectedGraph {
         Queue<Integer> queue = new ArrayDeque<>();
         queue.add(1);
         visited[1] = true;
-
         while(!queue.isEmpty() && !visited[A]) {
             int curr = queue.poll();
             for (int val : adjList.get(curr)){
